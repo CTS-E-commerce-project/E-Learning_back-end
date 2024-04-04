@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CourseRepo extends JpaRepository<Course,String> {
     List<Course> getAllByPhoneNumber(String phoneNumber);
+//    List<String> findAllDistinctByPhoneNumber();
 
 }

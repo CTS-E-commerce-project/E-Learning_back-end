@@ -1,5 +1,6 @@
 package com.satwik.e_learningapp.service.serviceImpl;
 
+import com.satwik.e_learningapp.dto.AllUserDto;
 import com.satwik.e_learningapp.dto.LoginDto;
 import com.satwik.e_learningapp.dto.UserDto;
 import com.satwik.e_learningapp.entity.User;
@@ -8,6 +9,9 @@ import com.satwik.e_learningapp.repository.UserRepo;
 import com.satwik.e_learningapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,5 +32,13 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         return user;
+    }
+
+    @Override
+    public List<AllUserDto> getAllUsers() {
+        List<User> users = userRepo.findAll();
+        List<AllUserDto> allUserDto =  users.stream().map((user)->new AllUserDto(user.getUserName(),
+                user.getPhoneNumber())).collect(Collectors.toList());
+        return allUserDto;
     }
 }
