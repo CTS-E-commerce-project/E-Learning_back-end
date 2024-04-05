@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/eLearning/v1")
 public class CourseController {
@@ -21,5 +22,10 @@ public class CourseController {
     public ResponseEntity<List<Course>> getAllCourseByPhoneNumber(@PathVariable String id){
         List<Course> courses = courseService.getAllCourseByPhoneNumber(id);
         return ResponseEntity.ok(courses);
+    }
+    @DeleteMapping("/deleteCourse/{id}/{phoneNumber}")
+    public ResponseEntity<String> deleteCourseByIdAndPhoneNumber(@PathVariable String id, @PathVariable String phoneNumber){
+        courseService.deleteCourseByCourseIdAndPhoneNumber(id,phoneNumber);
+        return ResponseEntity.ok("deleted successFully");
     }
 }
