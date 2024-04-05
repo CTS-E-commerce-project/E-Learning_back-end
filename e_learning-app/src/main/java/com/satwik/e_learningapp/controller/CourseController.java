@@ -22,9 +22,4 @@ public class CourseController {
         List<Course> courses = courseService.getAllCourseByPhoneNumber(id);
         return ResponseEntity.ok(courses);
     }
-    @DeleteMapping("/deleteCourse/{id}/{phoneNumber}")
-    public ResponseEntity<String> deleteCourseByIdAndPhoneNumber(@PathVariable String id, @PathVariable String phoneNumber){
-        courseService.deleteCourseByCourseIdAndPhoneNumber(id,phoneNumber);
-        return ResponseEntity.ok("deleted successFully");
-    }
 }
