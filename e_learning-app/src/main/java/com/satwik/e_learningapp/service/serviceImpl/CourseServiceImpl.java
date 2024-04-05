@@ -26,4 +26,9 @@ public class CourseServiceImpl implements CourseService {
         return courseRepo.getAllByPhoneNumber(phoneNumber);
     }
 
+    @Override
+    public void deleteCourseByCourseIdAndPhoneNumber(String courseId, String phoneNumber) {
+        courseRepo.deleteByIdAndPhoneNumber(courseId,phoneNumber);
+    }
+
 }
