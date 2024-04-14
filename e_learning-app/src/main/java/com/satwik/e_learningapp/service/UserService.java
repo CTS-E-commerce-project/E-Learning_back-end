@@ -11,4 +11,7 @@ public interface UserService {
     public User userLogin(LoginDto loginDto);
     public List<AllUserDto> getAllUsers();
 
+    User forgotPassword(String email);
+
+    User resetPassword(String password,String token);
 }

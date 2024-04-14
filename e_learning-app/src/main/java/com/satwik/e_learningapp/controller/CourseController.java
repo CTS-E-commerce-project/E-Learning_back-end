@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api/eLearning/v1")
 public class CourseController {
     @Autowired
-    CourseService courseService;
+    private CourseService courseService;
     @PostMapping("/saveCourse")
     public ResponseEntity<Course> saveCourse(@RequestBody Course course){
         return new ResponseEntity<>(courseService.saveCourse(course), HttpStatus.OK);

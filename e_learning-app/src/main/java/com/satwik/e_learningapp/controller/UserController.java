@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
@@ -31,5 +32,15 @@ public class UserController {
     public ResponseEntity<List<AllUserDto>> getAllUsers(){
         List<AllUserDto> allUser = userService.getAllUsers();
         return ResponseEntity.ok(allUser);
+    }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<User> forgotPassword(@RequestBody Map<String,String> requestBody){
+        return ResponseEntity.ok(userService.forgotPassword(requestBody.get("email")));
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<User> resetPassword(@RequestBody Map<String,String> requestBody){
+        return ResponseEntity.ok(userService.resetPassword(requestBody.get("password"),requestBody.get("token")));
     }
 }

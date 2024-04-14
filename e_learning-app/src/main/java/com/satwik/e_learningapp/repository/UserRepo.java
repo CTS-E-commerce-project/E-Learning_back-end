@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface UserRepo extends JpaRepository<User,String> {
 //    public List<User> findAllByPhone
+
+    User findByUserEmail(String email);
+    User findByToken(String token);
 }
