@@ -5,9 +5,7 @@ import java.util.List;
 
 public interface CourseService {
     public Course saveCourse(Course course);
-    public List<Course> getAllCourseByPhoneNumber(String phoneNumber);
-
-    public void deleteCourseByCourseIdAndPhoneNumber(String courseId, String phoneNumber);
-
-
+    public List<Course> getAllCourses();
+    public void deleteCourse(String courseId);
+    public Course updateCourse(Course course);
 }

@@ -7,9 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface CourseRepo extends JpaRepository<Course,String> {
-    List<Course> getAllByPhoneNumber(String phoneNumber);
-    @Transactional
-    void deleteByIdAndPhoneNumber(String id, String phoneNumber);
-//    List<String> findAllDistinctByPhoneNumber();
 
 }
