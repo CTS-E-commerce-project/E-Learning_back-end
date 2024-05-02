@@ -18,14 +18,18 @@ public class CourseController {
     public ResponseEntity<Course> saveCourse(@RequestBody Course course){
         return new ResponseEntity<>(courseService.saveCourse(course), HttpStatus.OK);
     }
-    @GetMapping("/getAllCourse/{id}")
-    public ResponseEntity<List<Course>> getAllCourseByPhoneNumber(@PathVariable String id){
-        List<Course> courses = courseService.getAllCourseByPhoneNumber(id);
-        return ResponseEntity.ok(courses);
+    @GetMapping("/getAllCourses")
+    public ResponseEntity<List<Course>> getAllCourses(){
+        return ResponseEntity.ok(courseService.getAllCourses());
     }
-    @DeleteMapping("/deleteCourse/{id}/{phoneNumber}")
-    public ResponseEntity<String> deleteCourseByIdAndPhoneNumber(@PathVariable String id, @PathVariable String phoneNumber){
-        courseService.deleteCourseByCourseIdAndPhoneNumber(id,phoneNumber);
-        return ResponseEntity.ok("deleted successFully");
+    @DeleteMapping("/deleteCourse/{id}")
+    public ResponseEntity<String> deleteCourse(@PathVariable String id){
+        courseService.deleteCourse(id);
+        return ResponseEntity.ok("Course deleted");
     }
+    @PutMapping("/updateCourse")
+    public ResponseEntity<Course> updateCourse(@RequestBody Course course){
+        return ResponseEntity.ok(courseService.updateCourse(course));
+    }
+
 }

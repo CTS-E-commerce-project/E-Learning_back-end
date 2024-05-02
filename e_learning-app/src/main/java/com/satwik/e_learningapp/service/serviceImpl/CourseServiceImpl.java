@@ -22,13 +22,21 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> getAllCourseByPhoneNumber(String phoneNumber) {
-        return courseRepo.getAllByPhoneNumber(phoneNumber);
+    public List<Course> getAllCourses() {
+        return courseRepo.findAll();
     }
 
     @Override
-    public void deleteCourseByCourseIdAndPhoneNumber(String courseId, String phoneNumber) {
-        courseRepo.deleteByIdAndPhoneNumber(courseId,phoneNumber);
+    public void deleteCourse(String courseId) {
+        courseRepo.deleteById(courseId);
+    }
+
+    @Override
+    public Course updateCourse(Course course) {
+//        Course prevCourse = courseRepo.findById(course.getId()).get();
+//        Course updateCourse = new Course();
+       Course updatedCourse = courseRepo.save(course);
+        return updatedCourse;
     }
 
 }
